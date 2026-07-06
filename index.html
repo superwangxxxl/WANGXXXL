@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>锦世源采购部行动指南 · 最终版</title>
+<style>
+/* ===== Apple UI Design System ===== */
+:root {
+  --bg: #f5f5f7;
+  --card-bg: #ffffff;
+  --text: #1d1d1f;
+  --text-secondary: #86868b;
+  --text-tertiary: #6e6e73;
+  --accent: #0071e3;
+  --accent-light: #e8f0fe;
+  --success: #34c759;
+  --warning: #ff9500;
+  --danger: #ff3b30;
+  --info: #5ac8fa;
+  --border: #d2d2d7;
+  --border-light: #e5e5ea;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+  --radius: 18px;
+  --radius-sm: 12px;
+  --radius-xs: 8px;
+  --transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  --glass: rgba(255,255,255,0.72);
+  --backdrop: saturate(180%) blur(20px);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.6; font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+.nav-bar {
+  position: fixed; top: 0; left: 0; width: 280px; height: 100vh;
+  background: var(--glass); backdrop-filter: var(--backdrop); -webkit-backdrop-filter: var(--backdrop);
+  border-right: 1px solid var(--border-light); z-index: 1000;
+  display: flex; flex-direction: column; overflow-y: auto; overflow-x: hidden;
+  transition: transform 0.3s ease;
+}
+.nav-bar::-webkit-scrollbar { width: 6px; }
+.nav-bar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+.nav-header { padding: 28px 24px 20px; border-bottom: 1px solid var(--border-light); }
+.nav-title { font-size: 18px; font-weight: 700; color: var(--text); letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }
+.nav-title::before { content: "◆"; color: var(--accent); font-size: 14px; }
+.nav-subtitle { font-size: 12px; color: var(--text-secondary); margin-top: 6px; font-weight: 400; }
+.nav-search { padding: 16px 20px 8px; }
+.nav-search input { width: 100%; padding: 10px 14px; border: 1px solid var(--border-light); border-radius: 10px; font-size: 13px; background: var(--card-bg); outline: none; transition: var(--transition); }
+.nav-search input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
+.nav-menu { padding: 8px 0; flex: 1; }
+.nav-group { margin-bottom: 4px; }
+.nav-group-title { padding: 10px 24px 6px; font-size: 11px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.5px; }
+.nav-link { display: block; padding: 9px 24px 9px 28px; text-decoration: none; color: var(--text-secondary); font-size: 13.5px; font-weight: 500; border-radius: 0 8px 8px 0; margin: 1px 8px 1px 0; transition: var(--transition); position: relative; }
+.nav-link:hover { background: rgba(0,113,227,0.06); color: var(--accent); }
+.nav-link.active { background: var(--accent-light); color: var(--accent); font-weight: 600; }
+.nav-link.active::before { content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 3px; background: var(--accent); border-radius: 0 2px 2px 0; }
+.nav-link .badge { display: inline-block; padding: 1px 6px; border-radius: 10px; font-size: 10px; font-weight: 600; margin-left: 6px; vertical-align: 1px; }
+.badge-new { background: var(--accent-light); color: var(--accent); }
+.badge-hot { background: #fff2f0; color: var(--danger); }
+.badge-info { background: #e5f5ff; color: var(--info); }
+.nav-footer { padding: 16px 24px; border-top: 1px solid var(--border-light); font-size: 11px; color: var(--text-tertiary); text-align: center; }
+.nav-toggle { display: none; position: fixed; top: 16px; left: 16px; z-index: 1001; width: 40px; height: 40px; border-radius: 10px; background: var(--glass); backdrop-filter: var(--backdrop); border: 1px solid var(--border-light); cursor: pointer; align-items: center; justify-content: center; font-size: 18px; box-shadow: var(--shadow); border: none; }
+.main-content { margin-left: 280px; min-height: 100vh; padding: 0; }
+.content-section { padding: 60px 48px; max-width: 900px; margin: 0 auto; }
+.content-section:not(:last-child) { border-bottom: 1px solid var(--border-light); }
+.section-hero { text-align: center; padding: 80px 48px 60px; }
+.hero-title { font-size: 56px; font-weight: 800; letter-spacing: -2px; background: linear-gradient(135deg, #1d1d1f, #434344); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.1; margin-bottom: 16px; }
+.hero-subtitle { font-size: 20px; color: var(--text-secondary); font-weight: 400; max-width: 600px; margin: 0 auto 40px; }
+.hero-badge-group { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.hero-badge { padding: 8px 18px; border-radius: 100px; font-size: 14px; font-weight: 600; background: var(--card-bg); border: 1px solid var(--border-light); box-shadow: var(--shadow); }
+.card { background: var(--card-bg); border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow); margin-bottom: 20px; border: 1px solid var(--border-light); transition: var(--transition); }
+.card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.card-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.card-icon.blue { background: var(--accent-light); color: var(--accent); }
+.card-icon.green { background: #e8f5e9; color: var(--success); }
+.card-icon.orange { background: #fff3e0; color: var(--warning); }
+.card-icon.red { background: #ffebee; color: var(--danger); }
+.card-icon.cyan { background: #e0f7fa; color: var(--info); }
+.card-icon.purple { background: #f3e5f5; color: #9c27b0; }
+.card-icon.gray { background: #f5f5f5; color: #616161; }
+.card-title { font-size: 20px; font-weight: 700; color: var(--text); }
+.card-subtitle { font-size: 14px; color: var(--text-secondary); margin-top: 4px; }
+.section-title { font-size: 32px; font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; display: flex; align-items: center; gap: 14px; }
+.section-title .num { width: 40px; height: 40px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; flex-shrink: 0; }
+.section-desc { font-size: 17px; color: var(--text-secondary); margin-bottom: 32px; max-width: 700px; }
+h3 { font-size: 22px; font-weight: 700; margin: 32px 0 16px; letter-spacing: -0.5px; }
+h4 { font-size: 17px; font-weight: 700; margin: 24px 0 12px; color: var(--text); }
+p { margin-bottom: 14px; color: var(--text); font-size: 15px; }
+ul { margin-left: 20px; margin-bottom: 12px; }
+li { margin-bottom: 6px; color: var(--text); }
+.table-wrap { overflow-x: auto; border-radius: var(--radius-sm); border: 1px solid var(--border-light); margin: 16px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th { background: #f8f8fa; padding: 14px 16px; text-align: left; font-weight: 600; color: var(--text); border-bottom: 1px solid var(--border-light); white-space: nowrap; }
+td { padding: 12px 16px; border-bottom: 1px solid var(--border-light); color: var(--text); vertical-align: top; }
+td code, td .tag { font-size: 13px; }
+tr:hover td { background: #fafafc; }
+tr:last-child td { border-bottom: none; }
+.tag { display: inline-block; padding: 3px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; margin: 1px; }
+.tag-blue { background: var(--accent-light); color: var(--accent); }
+.tag-green { background: #e8f5e9; color: #2e7d32; }
+.tag-orange { background: #fff3e0; color: #e65100; }
+.tag-red { background: #ffebee; color: #c62828; }
+.tag-gray { background: #f5f5f5; color: #616161; }
+.tag-purple { background: #f3e5f5; color: #6a1b9a; }
+.formula-box { background: #1d1d1f; color: #f5f5f7; padding: 20px 24px; border-radius: var(--radius-sm); font-family: "SF Mono", "Fira Code", "Consolas", monospace; font-size: 14px; margin: 16px 0; overflow-x: auto; line-height: 1.8; }
+.formula-box .comment { color: #6e6e73; }
+.formula-box .highlight { color: #5ac8fa; font-weight: 600; }
+.formula-box .danger { color: #ff453a; }
+.timeline { position: relative; padding-left: 28px; margin: 20px 0; }
+.timeline::before { content: ""; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: var(--border-light); }
+.timeline-item { position: relative; margin-bottom: 20px; padding-left: 20px; }
+.timeline-item::before { content: ""; position: absolute; left: -24px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); border: 3px solid var(--bg); }
+.timeline-item.done::before { background: var(--success); }
+.timeline-item.warn::before { background: var(--warning); }
+.timeline-item.alert::before { background: var(--danger); }
+.timeline-time { font-size: 12px; font-weight: 600; color: var(--accent); margin-bottom: 4px; }
+.timeline-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+.timeline-desc { font-size: 14px; color: var(--text-secondary); }
+.flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 16px 0; }
+.flow-step { padding: 10px 16px; border-radius: 10px; font-size: 13px; font-weight: 600; background: var(--card-bg); border: 1px solid var(--border-light); box-shadow: var(--shadow); }
+.flow-step.blue { background: var(--accent-light); color: var(--accent); border-color: var(--accent-light); }
+.flow-step.green { background: #e8f5e9; color: #2e7d32; border-color: #e8f5e9; }
+.flow-step.orange { background: #fff3e0; color: #e65100; border-color: #fff3e0; }
+.flow-step.red { background: #ffebee; color: #c62828; border-color: #ffebee; }
+.flow-arrow { color: var(--text-tertiary); font-size: 16px; font-weight: 700; }
+.alert { padding: 16px 20px; border-radius: var(--radius-sm); margin: 16px 0; font-size: 14px; border-left: 4px solid; display: flex; gap: 12px; align-items: flex-start; }
+.alert-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.alert-info { background: #f0f7ff; border-color: var(--accent); }
+.alert-success { background: #e8f5e9; border-color: var(--success); }
+.alert-warning { background: #fff8e1; border-color: var(--warning); }
+.alert-danger { background: #ffebee; border-color: var(--danger); }
+.alert-title { font-weight: 700; margin-bottom: 4px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width: 768px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } }
+.stat-card { text-align: center; padding: 28px 20px; }
+.stat-value { font-size: 36px; font-weight: 800; color: var(--accent); letter-spacing: -1px; }
+.stat-label { font-size: 13px; color: var(--text-secondary); margin-top: 4px; font-weight: 600; }
+.stat-card.green .stat-value { color: var(--success); }
+.stat-card.orange .stat-value { color: var(--warning); }
+.stat-card.red .stat-value { color: var(--danger); }
+.stat-card.purple .stat-value { color: #9c27b0; }
+.accordion { border: 1px solid var(--border-light); border-radius: var(--radius-sm); overflow: hidden; margin: 12px 0; }
+.accordion-header { padding: 16px 20px; background: var(--card-bg); cursor: pointer; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center; transition: var(--transition); }
+.accordion-header:hover { background: #f8f8fa; }
+.accordion-icon { font-size: 12px; transition: transform 0.2s; }
+.accordion-header.active .accordion-icon { transform: rotate(180deg); }
+.accordion-body { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+.accordion-body.show { padding: 0 20px 20px; max-height: 2000px; }
+.step-process { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0; }
+.step-box { flex: 1; min-width: 120px; background: var(--card-bg); border: 2px solid var(--border-light); border-radius: var(--radius-sm); padding: 16px; text-align: center; position: relative; }
+.step-box.active { border-color: var(--accent); background: var(--accent-light); }
+.step-box .step-num { font-size: 24px; font-weight: 800; color: var(--accent); }
+.step-box .step-title { font-weight: 600; font-size: 14px; margin-top: 4px; }
+.step-box .step-desc { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
+.decision-tree { background: var(--card-bg); border-radius: var(--radius-sm); padding: 20px; border: 1px solid var(--border-light); }
+.decision-branch { display: flex; align-items: center; gap: 12px; margin: 8px 0; padding: 8px 12px; border-radius: 8px; }
+.decision-yes { background: #e8f5e9; }
+.decision-no { background: #ffebee; }
+.decision-arrow { font-size: 18px; color: var(--text-tertiary); }
+.checklist { list-style: none; margin-left: 0; }
+.checklist li { padding: 8px 0 8px 28px; position: relative; border-bottom: 1px solid var(--border-light); }
+.checklist li::before { content: "☐"; position: absolute; left: 0; top: 8px; font-size: 16px; color: var(--accent); }
+.checklist li.checked::before { content: "☑"; }
+@media (max-width: 1024px) {
+  .nav-bar { transform: translateX(-100%); }
+  .nav-bar.open { transform: translateX(0); }
+  .main-content { margin-left: 0; }
+  .nav-toggle { display: flex; }
+  .content-section { padding: 40px 24px; }
+  .hero-title { font-size: 36px; }
+  .step-process { flex-direction: column; }
+}
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: 8px; }
+.mb-2 { margin-bottom: 16px; }
+.mb-3 { margin-bottom: 24px; }
+.mb-4 { margin-bottom: 32px; }
+.text-center { text-align: center; }
+.text-secondary { color: var(--text-secondary); }
+.text-sm { font-size: 13px; }
+.text-xs { font-size: 11px; }
+.font-bold { font-weight: 700; }
+.flex { display: flex; }
+.gap-2 { gap: 16px; }
+.items-center { align-items: center; }
+</style>
+</head>
+<body>
+
+<button class="nav-toggle" onclick="toggleNav()">☰</button>
+<nav class="nav-bar" id="navBar">
+  <div class="nav-header">
+    <div class="nav-title">锦世源采购部</div>
+    <div class="nav-subtitle">行动指南 · 最终版 v2.0</div>
+  </div>
+  <div class="nav-search">
+    <input type="text" id="navSearch" placeholder="搜索章节或内容..." onkeyup="searchNav()">
+  </div>
+  <div class="nav-menu" id="navMenu">
+    <div class="nav-group">
+      <div class="nav-group-title">全景与导航</div>
+      <a href="report.html" class="nav-link" style="background:var(--accent-light);color:var(--accent);font-weight:600;">📑 查看全景报告</a>
+      <a href="#overview" class="nav-link active">1 总览</a>
+      <a href="#org" class="nav-link">2 组织架构</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-title">工作节奏</div>
+      <a href="#daily" class="nav-link">3 每日时刻表</a>
+      <a href="#weekly" class="nav-link">4 每周节奏</a>
+      <a href="#dingtalk" class="nav-link">5 钉钉沟通体系</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-title">货盘与策略</div>
+      <a href="#data-logic" class="nav-link">6 货盘数据逻辑</a>
+      <a href="#strategy" class="nav-link">7 货盘策略</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-title">核心流程</div>
+      <a href="#restock" class="nav-link">8 补货流程</a>
+      <a href="#clearance" class="nav-link">9 清货流程</a>
+      <a href="#new-product" class="nav-link">10 新品流程</a>
+      <a href="#hot-sku" class="nav-link">11 爆款管控</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-title">协作与工具</div>
+      <a href="#cross-dept" class="nav-link">12 跨部门协作</a>
+      <a href="#dashboard" class="nav-link">13 数据看板</a>
+      <a href="#rules" class="nav-link">14 制度文件</a>
+      <a href="#troubleshoot" class="nav-link">15 问题处理</a>
+      <a href="#newcomer" class="nav-link">16 新人指南</a>
+    </div>
+  </div>
+  <div class="nav-footer">
+    数据更新于 2026-07-06<br>采购部内部资料 · 请勿外传<br>如有疑问联系 王文增
+  </div>
+</nav>
+
+<main class="main-content" id="mainContent">
+
+<!-- SECTION 1: 总览 -->
+<section class="content-section" id="overview">
+  <div class="section-hero">
+    <div class="hero-title">锦世源采购部<br>行动指南</div>
+    <div class="hero-subtitle">数据驱动 · 流程闭环 · 标准统一<br>新人快速上手，老人精准决策</div>
+    <div class="hero-badge-group">
+      <div class="hero-badge">🗓 周三双星货品会</div>
+      <div class="hero-badge">🗓 周五白牌货品会</div>
+      <div class="hero-badge">⚡ 影刀缺货预警</div>
+      <div class="hero-badge">📊 聚水潭实时数据</div>
+    </div>
+  </div>
+
+  <div class="grid-4">
+    <div class="card stat-card">
+      <div class="stat-value">391</div>
+      <div class="stat-label">公司总人数</div>
+    </div>
+    <div class="card stat-card green">
+      <div class="stat-value">53</div>
+      <div class="stat-label">采购部总人数</div>
+    </div>
+    <div class="card stat-card orange">
+      <div class="stat-value">30,000</div>
+      <div class="stat-label">日发货（双）</div>
+    </div>
+    <div class="card stat-card purple">
+      <div class="stat-value">2016</div>
+      <div class="stat-label">公司成立年</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 24px;">
+    <div class="card-header">
+      <div class="card-icon blue">🎯</div>
+      <div>
+        <div class="card-title">公司信息</div>
+        <div class="card-subtitle">锦世源基本情况</div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div>
+        <p><strong>公司名称：</strong>偃师市锦世源鞋业有限公司</p>
+        <p><strong>成立时间：</strong>2016年7月</p>
+        <p><strong>注册人数：</strong>391人</p>
+        <p><strong>日发货量：</strong>30,000双</p>
+        <p><strong>仓储面积：</strong>30,000平方米</p>
+      </div>
+      <div>
+        <p><strong>办公地点：</strong>三易实业园区北办公楼3楼</p>
+        <p><strong>洛阳分部：</strong>太康路东段369号恒生科技园A区12号楼3楼</p>
+        <p><strong>老板：</strong>郭晓杰</p>
+        <p><strong>价值观：</strong>客户第一、快速迭代、学习创新、真实高效</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon blue">🏢</div>
+      <div>
+        <div class="card-title">部门定位</div>
+        <div class="card-subtitle">采购部是公司商品经营中台</div>
+      </div>
+    </div>
+    <div class="flow" style="justify-content: center;">
+      <div class="flow-step blue">维护货盘</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step blue">整合ERP</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step blue">工厂帮量</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step green">供应链判断</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step green">预警与执行</div>
+    </div>
+    <div class="alert alert-info" style="margin-top: 16px;">
+      <div class="alert-icon">💡</div>
+      <div>
+        <div class="alert-title">核心原则</div>
+        <div>80%的钱和精力，投给20%的头部产品。我们是「需求翻译官」，更是「供应链指挥官」。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon green">📊</div>
+      <div>
+        <div class="card-title">采购部关键数据</div>
+        <div class="card-subtitle">核心指标一览</div>
+      </div>
+    </div>
+    <div class="grid-4">
+      <div class="stat-card">
+        <div class="stat-value">53</div>
+        <div class="stat-label">采购部总人数</div>
+      </div>
+      <div class="stat-card green">
+        <div class="stat-value">17</div>
+        <div class="stat-label">品控团队人数</div>
+      </div>
+      <div class="stat-card orange">
+        <div class="stat-value">13</div>
+        <div class="stat-label">货盘数据表</div>
+      </div>
+      <div class="stat-card red">
+        <div class="stat-value">20-30</div>
+        <div class="stat-label">爆款管控款数</div>
+      </div>
+    </div>
+    <div class="grid-4" style="margin-top: 16px;">
+      <div class="stat-card">
+        <div class="stat-value">7</div>
+        <div class="stat-label">天库存预警线</div>
+      </div>
+      <div class="stat-card orange">
+        <div class="stat-value">30</div>
+        <div class="stat-label">天补货红线</div>
+      </div>
+      <div class="stat-card red">
+        <div class="stat-value">90</div>
+        <div class="stat-label">天滞销红线</div>
+      </div>
+      <div class="stat-card purple">
+        <div class="stat-value">60</div>
+        <div class="stat-label">天新品决策期</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: 组织架构 -->
+<section class="content-section" id="org">
+  <div class="section-title"><div class="num">2</div>组织架构</div>
+  <div class="section-desc">历史演变、当前架构、人员信息。了解"出了问题找谁"。</div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon blue">🏢</div>
+      <div><div class="card-title">采购开发部架构</div><div class="card-subtitle">53人，一体化供应链中台</div></div>
+    </div>
+    <div class="flow" style="justify-content: center; margin: 24px 0;">
+      <div class="flow-step blue">采购开发部（53人）</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step green">开发部（23人）</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step green">采购部（31人）</div>
+    </div>
+    <div class="grid-2">
+      <div>
+        <h4>开发部（23人）</h4>
+        <p><strong>白牌开发组（12人）：</strong>负责无品牌款式开发</p>
+        <p><strong>双星开发组（7人）：</strong>负责双星品牌款式开发</p>
+        <p><strong>商品中心：</strong>商品企划与管理</p>
+      </div>
+      <div>
+        <h4>采购部（31人）</h4>
+        <p><strong>文员组（5人）：</strong>数据维护、标签管理、报表输出</p>
+        <p><strong>跟单组（7人）：</strong>订单执行、到货跟进</p>
+        <p><strong>品控组（17人）：</strong>入仓质检、供应商质量跟踪</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon cyan">👥</div><div><div class="card-title">核心人员</div><div class="card-subtitle">真实姓名与职责</div></div></div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>姓名</th><th>职位</th><th>核心职责</th></tr>
+        <tr><td><span class="tag tag-blue">张伟晓</span></td><td>采购部总负责</td><td>统筹采购部全局，制定策略，协调跨部门</td></tr>
+        <tr><td><span class="tag tag-blue">王文增</span></td><td>数据支持</td><td>数据分析、爆款测算、货盘数据维护</td></tr>
+        <tr><td><span class="tag tag-purple">杨俊娜</span></td><td>品控负责人</td><td>品质标准制定、品控团队管理、驻厂质检安排</td></tr>
+        <tr><td><span class="tag tag-green">邓青青</span></td><td>跟单组长</td><td>订单下达、工厂跟进、交期管理</td></tr>
+        <tr><td><span class="tag tag-green">任秋红</span></td><td>双星开发</td><td>双星品牌款式开发</td></tr>
+        <tr><td><span class="tag tag-green">张欢</span></td><td>白牌开发</td><td>白牌款式开发</td></tr>
+        <tr><td><span class="tag tag-orange">贺帅艳</span></td><td>财务对接</td><td>供应商付款、绩效核算、清货备案</td></tr>
+        <tr><td><span class="tag tag-red">郭晓杰</span></td><td>老板</td><td>公司决策、清货计划审批</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon purple">🏗</div><div><div class="card-title">岗位配置</div><div class="card-subtitle">各岗位职责边界</div></div></div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>岗位</th><th>人数</th><th>占比</th><th>核心职责</th><th>核心产出</th></tr>
+        <tr><td><span class="tag tag-blue">采购主管</span></td><td>1人</td><td>3.2%</td><td>统筹全局、策略制定、跨部门协调</td><td>年度目标计划书、月度策略决策</td></tr>
+        <tr><td><span class="tag tag-green">采购文员</span></td><td>5人</td><td>16.1%</td><td>数据导出、标签维护、爆款缺货统计</td><td>爆款缺货统计表、标签维护</td></tr>
+        <tr><td><span class="tag tag-green">采购跟单员</span></td><td>7人</td><td>22.6%</td><td>订单下达、工厂跟进、交期管理</td><td>采购订单、到货跟进</td></tr>
+        <tr><td><span class="tag tag-purple">品控专员</span></td><td>17人</td><td>54.8%</td><td>入仓质检、供应商质量跟踪、驻厂质检</td><td>质检报告、品质改善方案</td></tr>
+      </table>
+    </div>
+    <div class="alert alert-info">
+      <div class="alert-icon">💡</div>
+      <div>品控组占采购部总人数54.8%，远高于行业平均水平（10%-20%），说明公司对品质管控极度重视。长远方向：将品控前置到供应商出厂质检。</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: 每日时刻表 -->
+<section class="content-section" id="daily">
+  <div class="section-title"><div class="num">3</div>每日时刻表</div>
+  <div class="section-desc">分岗位详细时间安排。新人按时刻表执行，老人按数据触发动作。</div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon blue">👤</div>
+      <div><div class="card-title">采购专员时刻表</div><div class="card-subtitle">8:30 - 18:00</div></div>
+    </div>
+    <h4>上午 8:30 — 12:00</h4>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-time">8:30 - 9:30</div>
+        <div class="timeline-title">日常巡看板</div>
+        <div class="timeline-desc">查看货盘看板（品牌/品类维度）、大货货盘周转天数、清货看板进度。确认数据源-库存动销已更新。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">9:30 - 10:00</div>
+        <div class="timeline-title">爆款缺货统计</div>
+        <div class="timeline-desc">文员导出《爆款缺货统计表》，统计当日各爆款缺货数量、缺货率。同步至采购部缺货看板。</div>
+      </div>
+      <div class="timeline-item alert">
+        <div class="timeline-time">10:00 - 10:30</div>
+        <div class="timeline-title">缺货预警响应</div>
+        <div class="timeline-desc">影刀机器人自动预警：可用数 < 近七日销量则预警。针对缺货爆款立即核查原因，快速推进解决。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">10:30 - 11:30</div>
+        <div class="timeline-title">补货/下单处理</div>
+        <div class="timeline-desc">处理昨日确认的补货单，核对款式、数量、交期。1688平台优先下单。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">11:30 - 12:00</div>
+        <div class="timeline-title">到货跟进</div>
+        <div class="timeline-desc">每日跟进工厂交付进度，确认材料到厂日→生产上机日→成品到仓日。若延迟风险，及时同步。</div>
+      </div>
+    </div>
+    <h4>下午 13:30 — 18:00</h4>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-time">13:30 - 14:30</div>
+        <div class="timeline-title">滞销款排查</div>
+        <div class="timeline-desc">大货货盘筛选周转天数>30天的款，标记需关注。清货看板检查超期流转款。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">14:30 - 15:30</div>
+        <div class="timeline-title">新品数据跟踪</div>
+        <div class="timeline-desc">新品入库后每日监控销售数据。入库满60天必须评估策略（爆款/常备/流转/清货）。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">15:30 - 16:30</div>
+        <div class="timeline-title">在途库存同步</div>
+        <div class="timeline-desc">更新维护爆款采购在途数量，确保运营/业务/采购/仓库实时掌握库存及在途情况。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">16:30 - 17:30</div>
+        <div class="timeline-title">供应商沟通</div>
+        <div class="timeline-desc">与供应商确认订单进度、交期调整、质量反馈。处理质检异常。</div>
+      </div>
+      <div class="timeline-item done">
+        <div class="timeline-time">17:30 - 18:00</div>
+        <div class="timeline-title">待办收尾</div>
+        <div class="timeline-desc">各项工作收尾闭环，处理遗留待办。今日事今日毕，缺货预警不过夜。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon purple">🔍</div>
+        <div><div class="card-title">品控专员时刻表</div><div class="card-subtitle">驻厂 + 入仓质检</div></div>
+      </div>
+      <p><strong>品控固定驻核心工厂</strong>，对重点供应商实施驻厂质检。</p>
+      <p><strong>8:30-9:00：</strong>查看当日到货计划，确认质检批次。</p>
+      <p><strong>9:00-12:00：</strong>入仓质检或驻厂巡检。不合格品立即标记隔离。</p>
+      <p><strong>13:30-16:00：</strong>供应商质量跟踪、质检报告整理。</p>
+      <p><strong>16:00-17:00：</strong>与采购部同步当日质检结果。</p>
+      <p><strong>17:00-18:00：</strong>填写质检日报，归档不合格品处理记录。</p>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon gray">📝</div>
+        <div><div class="card-title">采购文员时刻表</div><div class="card-subtitle">数据维护与报表</div></div>
+      </div>
+      <p><strong>8:30-9:30：</strong>更新数据源-库存动销，确保数据准确。</p>
+      <p><strong>9:30-10:00：</strong>导出爆款缺货统计表，计算缺货率。</p>
+      <p><strong>10:00-11:30：</strong>维护聚水潭系统标签（爆款/常备/流转等）。</p>
+      <p><strong>13:30-15:00：</strong>数据导出、报表制作、台账更新。</p>
+      <p><strong>15:00-16:00：</strong>新品价格确认、改价流程跟进。</p>
+      <p><strong>16:00-18:00：</strong>文档归档、数据质量检查。</p>
+    </div>
+  </div>
+
+  <div class="alert alert-danger" style="margin-top: 20px;">
+    <div class="alert-icon">⏰</div>
+    <div>
+      <div class="alert-title">时间铁律</div>
+      <div>爆款库存低于7天 → 红色警报必须当天拉响<br>周转天数超30天 → 禁止补货<br>任何当季SKU库存周转超90天 → 重大事故<br>钉钉日志每天18:00前提交</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: 每周节奏 -->
+<section class="content-section" id="weekly">
+  <div class="section-title"><div class="num">4</div>每周节奏</div>
+  <div class="section-desc">周一到周日，每个时间点有明确的输入和输出。旺季冬季加班，淡季单休。</div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header"><div class="card-icon blue">📅</div><div><div class="card-title">周三 · 双星货品会</div><div class="card-subtitle">双星品牌专项</div></div></div>
+      <div class="timeline">
+        <div class="timeline-item"><div class="timeline-time">会前</div><div class="timeline-title">数据准备</div><div class="timeline-desc">更新双星货盘数据，确认爆款标签、库存、在途。</div></div>
+        <div class="timeline-item"><div class="timeline-time">会中</div><div class="timeline-title">策略确认</div><div class="timeline-desc">确认爆款/常备/新品/清仓款，确定安全库存基数和工厂备帮数量。</div></div>
+        <div class="timeline-item"><div class="timeline-time">会后1工作日</div><div class="timeline-title">标签维护</div><div class="timeline-desc">采购部完成聚水潭系统"爆款"策略标签维护。</div></div>
+        <div class="timeline-item"><div class="timeline-time">会后1工作日</div><div class="timeline-title">明细测算</div><div class="timeline-desc">数据分析师计算补备货明细，同步至业务群确认。</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-icon green">📅</div><div><div class="card-title">周五 · 白牌货品会</div><div class="card-subtitle">白牌品牌专项</div></div></div>
+      <div class="timeline">
+        <div class="timeline-item"><div class="timeline-time">会前</div><div class="timeline-title">数据准备</div><div class="timeline-desc">更新白牌货盘数据，确认周转、销量、标签状态。</div></div>
+        <div class="timeline-item"><div class="timeline-time">会中</div><div class="timeline-title">策略确认</div><div class="timeline-desc">制定补货/清货/新品策略。确认流转款时间节点。</div></div>
+        <div class="timeline-item"><div class="timeline-time">会后</div><div class="timeline-title">执行落地</div><div class="timeline-desc">按货品会决策执行补货/清货/策略调整。</div></div>
+        <div class="timeline-item"><div class="timeline-time">每周</div><div class="timeline-title">进度汇报</div><div class="timeline-desc">每周货品会汇报清货进度、缺货率、周转情况。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 20px;">
+    <div class="card-header"><div class="card-icon purple">📆</div><div><div class="card-title">每周七天时间线</div><div class="card-subtitle">全周工作安排</div></div></div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>日期</th><th>重点事项</th><th>负责岗位</th></tr>
+        <tr><td><span class="tag tag-blue">周一</span></td><td>周会复盘上周数据，制定本周计划</td><td>采购主管 + 全员</td></tr>
+        <tr><td><span class="tag tag-blue">周二</span></td><td>双星数据准备，货品会资料整理</td><td>数据分析师 + 采购文员</td></tr>
+        <tr><td><span class="tag tag-red">周三</span></td><td><strong>双星货品会</strong> - 策略确认、补备货测算</td><td>采购部 + 运营 + 开发</td></tr>
+        <tr><td><span class="tag tag-blue">周四</span></td><td>白牌数据准备，货品会资料整理</td><td>数据分析师 + 采购文员</td></tr>
+        <tr><td><span class="tag tag-red">周五</span></td><td><strong>白牌货品会</strong> - 补货/清货/新品策略</td><td>采购部 + 运营 + 业务</td></tr>
+        <tr><td><span class="tag tag-orange">周六</span></td><td>执行跟进、到货协调、数据更新</td><td>采购跟单员</td></tr>
+        <tr><td><span class="tag tag-gray">周日</span></td><td>淡季单休，旺季冬季加班</td><td>按需安排</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 20px;">
+    <div class="card-header"><div class="card-icon orange">📆</div><div><div class="card-title">每月固定节点</div><div class="card-subtitle">月度闭环管理</div></div></div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>日期</th><th>动作</th><th>负责</th><th>输出</th></tr>
+        <tr><td>每月30号前</td><td>开发部提交新品到货计划（2个月后）</td><td>开发部</td><td>新品到货计划</td></tr>
+        <tr><td>收到新品计划后10工作日</td><td>采购部提供清货款式清单</td><td>采购部</td><td>清货清单</td></tr>
+        <tr><td>收到清货清单后5工作日</td><td>销售端出具清货计划</td><td>销售部</td><td>清货节奏表</td></tr>
+        <tr><td>每月月初</td><td>财务部核算爆款缺货管控绩效</td><td>财务部（贺帅艳）</td><td>绩效数据</td></tr>
+        <tr><td>每月月初</td><td>采购部月度汇报</td><td>采购主管（张伟晓）</td><td>月度工作汇报PPT</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: 钉钉沟通体系 -->
+<section class="content-section" id="dingtalk">
+  <div class="section-title"><div class="num">5</div>钉钉沟通体系</div>
+  <div class="section-desc">12个核心群聊，每个群有明确的用途、成员和使用规则。所有沟通必须留痕。</div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon blue">💬</div><div><div class="card-title">12个核心群聊</div><div class="card-subtitle">采购部信息高速公路</div></div></div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>群名</th><th>核心功能</th><th>成员特征</th><th>活跃度</th></tr>
+        <tr><td><span class="tag tag-red">催货群</span></td><td>工厂交期催促、紧急订单跟进</td><td>90人（最大群），含采购、运营、业务、仓库多方</td><td>🔥 高</td></tr>
+        <tr><td><span class="tag tag-red">来货群</span></td><td>每日到货通知、入库预约</td><td>跨部门</td><td>🔥 高</td></tr>
+        <tr><td><span class="tag tag-blue">采购辅料沟通群</span></td><td>鞋盒、鞋垫、纸箱、吊牌等辅料采购</td><td>采购+业务</td><td>🔥 高</td></tr>
+        <tr><td><span class="tag tag-blue">【TE仓】来货入库群</span></td><td>TE仓专属入库协调</td><td>采购+仓库</td><td>⚡ 中</td></tr>
+        <tr><td><span class="tag tag-red">岳滩仓入库验鞋质量沟通群</span></td><td>入仓质检异常处理</td><td>采购+品控+仓库</td><td>🔥 高</td></tr>
+        <tr><td><span class="tag tag-blue">报计划群</span></td><td>采购计划申报与确认</td><td>采购+运营</td><td>⚡ 中</td></tr>
+        <tr><td><span class="tag tag-green">SKU-价格-变动通知群</span></td><td>价格调整通知</td><td>采购+运营+财务</td><td>⚡ 中</td></tr>
+        <tr><td><span class="tag tag-green">开发采购新品SKU入库单</span></td><td>新品入库流程</td><td>开发→采购→仓库</td><td>⚡ 中</td></tr>
+        <tr><td><span class="tag tag-orange">款式策略-跟进</span></td><td>爆款/常备/流转策略确认</td><td>采购+运营</td><td>🔥 高</td></tr>
+        <tr><td><span class="tag tag-red">清货《次》沟通群</span></td><td>次品/清货处理</td><td>采购+运营+仓库</td><td>🔥 高</td></tr>
+        <tr><td><span class="tag tag-red">JSY-采购部（爆款预警）</span></td><td>爆款缺货预警（影刀机器人推送）</td><td>采购部全员</td><td>🔥 高</td></tr>
+        <tr><td><span class="tag tag-blue">《增长率分析表》共享群</span></td><td>销售数据分析共享</td><td>管理层+数据分析师</td><td>⚡ 中</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header"><div class="card-icon green">✅</div><div><div class="card-title">沟通规则</div><div class="card-subtitle">高效使用群聊</div></div></div>
+      <ul>
+        <li><strong>一问题一群：</strong>每个群有明确主题，不跨群讨论无关话题</li>
+        <li><strong>@特定人：</strong>需要某人响应时直接@，避免全员轰炸</li>
+        <li><strong>留痕原则：</strong>所有跨部门沟通必须留痕（钉钉群/微信），口头说了不算</li>
+        <li><strong>统一对接：</strong>涉及设计/采购/仓库等跨部门需求统一经运营组长对接</li>
+        <li><strong>日志提交：</strong>每天18:00前提交钉钉工作日志</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-icon orange">⚠️</div><div><div class="card-title">信息过载应对</div><div class="card-subtitle">避免消息淹没</div></div></div>
+      <p>22个群对采购部31人而言，人均参与群数过多。建议：</p>
+      <ul>
+        <li>将催货、来货、报计划等供应链执行群整合为2-3个群</li>
+        <li>设置消息免打扰，仅对核心群开启实时通知</li>
+        <li>每日固定时间集中处理消息，避免实时打断</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: 货盘数据逻辑 -->
+<section class="content-section" id="data-logic">
+  <div class="section-title"><div class="num">6</div>货盘数据逻辑</div>
+  <div class="section-desc">13个工作表结构、公式、规则。理解数据从哪里来、怎么计算、如何关联。</div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon blue">🔄</div><div><div class="card-title">13张工作表架构</div><div class="card-subtitle">从数据源到决策看板</div></div></div>
+    <div class="flow" style="justify-content: center; flex-wrap: wrap; margin: 24px 0;">
+      <div class="flow-step blue">数据源层</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step green">分析层</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">看板层</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">专项层</div>
+    </div>
+    <div class="grid-2">
+      <div>
+        <h4>数据源层（5张）</h4>
+        <p><span class="tag tag-blue">数据源-库存动销</span> 每日更新，所有库存与销售的唯一事实来源</p>
+        <p><span class="tag tag-blue">数据源-成本价</span> 按需更新，每款每供应商的采购成本</p>
+        <p><span class="tag tag-blue">数据源-月色占比</span> 每日自动，各颜色规格销量占比</p>
+        <p><span class="tag tag-blue">数据源-月趋势</span> 每日追加，每日销量趋势记录</p>
+        <p><span class="tag tag-blue">数据源-25总销</span> 历史存档，2025年度累计销售数据</p>
+      </div>
+      <div>
+        <h4>分析层 + 看板层 + 专项层（8张）</h4>
+        <p><span class="tag tag-green">大货货盘</span> 实时刷新，所有在售款式核心信息汇总</p>
+        <p><span class="tag tag-orange">货盘看板</span> 实时刷新，按品牌+品类维度汇总</p>
+        <p><span class="tag tag-orange">清货看板</span> 实时刷新，超期库存专项监控</p>
+        <p><span class="tag tag-orange">网鞋看板</span> 实时刷新，网鞋品类专项</p>
+        <p><span class="tag tag-red">爆款缺货统计表</span> 每日，缺货监控</p>
+        <p><span class="tag tag-purple">新品上架跟进表</span> 开发/美工/运营更新</p>
+        <p><span class="tag tag-blue">增长率分析表</span> 销售数据分析</p>
+        <p><span class="tag tag-gray">其他专项表格</span> 按需使用</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon cyan">📐</div><div><div class="card-title">关键指标定义</div><div class="card-subtitle">计算逻辑与判断标准</div></div></div>
+    <div class="formula-box">
+      <span class="comment"># 核心库存公式</span>
+      <span class="highlight">可用数</span> = 主仓实际库存 - 订单占有数
+      <span class="highlight">周转天数</span> = 可用数 / 日均销
+      <span class="highlight">库存周转</span> = 可用数 / 日均销
+      <span class="highlight">库+途周转</span> = (可用数 + 采购在途) / 日均销
+      <span class="comment"># 补货公式</span>
+      <span class="highlight">补货量</span> = (采购到货天数 + 15) × 日均销量 - 现有库存 - 采购在途
+      <span class="comment"># 安全库存</span>
+      <span class="highlight">安全库存</span> = 未来7天预估销量 × 1.5倍
+      <span class="comment"># 爆款预警（影刀机器人）</span>
+      <span class="highlight">预警条件</span> = 可用数 < 近七日销量 → 自动推送预警
+    </div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>指标</th><th>健康阈值</th><th>策略含义</th></tr>
+        <tr><td>周转天数</td><td><span class="tag tag-green">≤15天</span> 良好 / <span class="tag tag-orange">16-30天</span> 关注 / <span class="tag tag-red">>30天</span> 预警</td><td>越低越好，反映库存消化速度</td></tr>
+        <tr><td>爆款库存</td><td><span class="tag tag-red">低于7天销量</span> → 红色警报</td><td>爆款永远不能断货</td></tr>
+        <tr><td>滞销红线</td><td><span class="tag tag-red">当季SKU >90天</span> → 重大事故</td><td>必须立即启动清货</td></tr>
+        <tr><td>补货红线</td><td><span class="tag tag-red">周转天数 >30天</span> → 禁止补货</td><td>先清后补</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon purple">🔗</div><div><div class="card-title">公式关联明细</div><div class="card-subtitle">大货货盘数据来源</div></div></div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>大货货盘字段</th><th>来源表</th><th>匹配方式</th><th>公式</th></tr>
+        <tr><td>供应商</td><td>数据源-库存动销</td><td>款式编码 → 第4列</td><td><code>=VLOOKUP(B2,'数据源-库存动销'!B:AB,4,0)</code></td></tr>
+        <tr><td>产品分类</td><td>数据源-库存动销</td><td>款式编码 → 第2列</td><td><code>=VLOOKUP(B2,'数据源-库存动销'!B:AB,2,0)</code></td></tr>
+        <tr><td>商品标签</td><td>数据源-库存动销</td><td>款式编码 → 第3列</td><td><code>=VLOOKUP(B2,'数据源-库存动销'!B:AB,3,0)</code></td></tr>
+        <tr><td>品牌</td><td>数据源-库存动销</td><td>款式编码 → 第6列</td><td><code>=VLOOKUP(B2,'数据源-库存动销'!B:CW,6,0)</code></td></tr>
+        <tr><td>可用数</td><td>数据源-库存动销</td><td>款式编码 → 第9列</td><td><code>=VLOOKUP(B2,'数据源-库存动销'!B:AB,9,0)</code></td></tr>
+        <tr><td>采购价</td><td>数据源-成本价</td><td>供应商+编码 双条件</td><td><code>=FILTER('数据源-成本价'!D:D,('数据源-成本价'!A:A=D2)*('数据源-成本价'!B:B=B2))</code></td></tr>
+        <tr><td>库存周转</td><td>计算</td><td>可用数/日均销</td><td><code>=J2/AM2</code></td></tr>
+      </table>
+    </div>
+    <div class="alert alert-info">
+      <div class="alert-icon">💡</div>
+      <div><div class="alert-title">数据质量检查点</div>
+      <div>1. 款式编码唯一性（无重复）| 2. 供应商匹配一致性 | 3. 公式无#N/A | 4. 可用数无负数 | 5. 连续7天零销量需标记</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: 货盘策略 -->
+<section class="content-section" id="strategy">
+  <div class="section-title"><div class="num">7</div>货盘策略</div>
+  <div class="section-desc">四类货品生命周期、白牌备帮策略、双星报货流程。白牌与双星分开定义，不能混用标准。</div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header"><div class="card-icon blue">🏷</div><div><div class="card-title">白牌策略标签</div><div class="card-subtitle">基于销售数据的动态分类</div></div></div>
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion(this)"><span>🔥 爆款</span><span class="accordion-icon">▼</span></div>
+        <div class="accordion-body"><p><strong>定义：</strong>稳定自然销售 + 白牌全渠道月销≥10000</p><p><strong>动作：</strong>确保库存充足，优先补货。安全库存基数保持。采购在途可视化。</p><p><strong>标准：</strong>全渠道近30天销量≥10000是核心指标。</p></div>
+      </div>
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion(this)"><span>📦 常备款</span><span class="accordion-icon">▼</span></div>
+        <div class="accordion-body"><p><strong>定义：</strong>近30天自然销量稳定>1000 + 稳定拿货推广</p><p><strong>动作：</strong>维持合理库存，按周转补货。月销过千是备帮资格，不是固定备帮量。</p></div>
+      </div>
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion(this)"><span>🔄 流转款</span><span class="accordion-icon">▼</span></div>
+        <div class="accordion-body"><p><strong>定义：</strong>季节性/过渡款，带有流转月份标签</p><p><strong>动作：</strong>控制库存，按时间节点清理。标签格式：26年XX月-流转款</p></div>
+      </div>
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion(this)"><span>💰 五元清</span><span class="accordion-icon">▼</span></div>
+        <div class="accordion-body"><p><strong>定义：</strong>低价清仓款</p><p><strong>动作：</strong>立即停止补货，全力清仓。亏损不计入前端团队核算。</p></div>
+      </div>
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion(this)"><span>✨ 新品</span><span class="accordion-icon">▼</span></div>
+        <div class="accordion-body"><p><strong>定义：</strong>入库后未满60天的款式</p><p><strong>动作：</strong>数据分析师每日监控。入库满60天必须变更策略（爆款/常备/流转/清货）。</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-icon green">🏷</div><div><div class="card-title">双星策略标签</div><div class="card-subtitle">按总销量+近期表现的阶梯分类</div></div></div>
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion(this)"><span>🔥 爆款专项</span><span class="accordion-icon">▼</span></div>
+        <div class="accordion-body"><p><strong>定义：</strong>近7日销量≥2000</p><p><strong>动作：</strong>优先保障，安全库存基数保持。有订单后申请辅料/织唛/LOGO。</p></div>
+      </div>
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion(this)"><span>📦 常备</span><span class="accordion-icon">▼</span></div>
+        <div class="accordion-body"><p><strong>定义：</strong>总销≥5000</p><p><strong>动作：</strong>维持合理库存，按标准补货。</p></div>
+      </div>
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion(this)"><span>📊 平销</span><span class="accordion-icon">▼</span></div>
+        <div class="accordion-body"><p><strong>定义：</strong>总销2000-5000</p><p><strong>动作：</strong>常规跟进，不超额备货。</p></div>
+      </div>
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion(this)"><span>✨ 新品</span><span class="accordion-icon">▼</span></div>
+        <div class="accordion-body"><p><strong>定义：</strong>有返单且<2000，60天内</p><p><strong>动作：</strong>60天后评估升级为平销/常备或降级。</p></div>
+      </div>
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion(this)"><span>🆕 首单</span><span class="accordion-icon">▼</span></div>
+        <div class="accordion-body"><p><strong>定义：</strong>无返单，60天内</p><p><strong>动作：</strong>60天后评估，不达标进入清仓。</p></div>
+      </div>
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion(this)"><span>🧹 清仓/五元清/私款</span><span class="accordion-icon">▼</span></div>
+        <div class="accordion-body"><p><strong>定义：</strong>滞销或终止合作款</p><p><strong>动作：</strong>立即停止补货，全力清货。双星有订单后才可申请辅料/织唛/LOGO。</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-top: 20px;">
+    <div class="card">
+      <div class="card-header"><div class="card-icon orange">🔧</div><div><div class="card-title">白牌备帮策略</div><div class="card-subtitle">提前备鞋帮半成品</div></div></div>
+      <p><strong>策略：</strong>白牌爆款和常备款提前备鞋帮半成品，缩短生产周期。</p>
+      <p><strong>触发条件：</strong>月销稳定过千的款具备备帮资格。</p>
+      <p><strong>操作：</strong>与工厂协商提前生产鞋帮，按实际订单组装成品。</p>
+      <p><strong>监控：</strong>帮子库存 > 现鞋 × 3 时，评估帮子利用率，考虑停做。</p>
+      <div class="alert alert-warning">
+        <div class="alert-icon">⚠️</div>
+        <div>季末所有款式优先<strong>控货、压库存、压帮量或收仓</strong>，不默认清货。季节性强的网鞋/拖凉鞋/棉鞋制定收仓计划。</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-icon blue">📋</div><div><div class="card-title">双星报货流程</div><div class="card-subtitle">前端报货群提需求</div></div></div>
+      <p><strong>流程：</strong>前端运营在报货群提需求 → 采购部确认 → 有订单后申请辅料/织唛/LOGO。</p>
+      <p><strong>关键节点：</strong></p>
+      <ul>
+        <li>前端报货群提交款式、数量需求</li>
+        <li>青岛总部审核、制作辅料/织唛/LOGO</li>
+        <li>快递到位后才可生产双星帮面</li>
+        <li>生产周期：飞织7-10天，复杂10-15天</li>
+      </ul>
+      <div class="alert alert-info">
+        <div class="alert-icon">💡</div>
+        <div>双星生产周期长于白牌，需预留更长时间窗口。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-warning" style="margin-top: 20px;">
+    <div class="alert-icon">⚠️</div>
+    <div><div class="alert-title">季末通用规则</div>
+    <div>所有款式优先<strong>控货、压库存、压帮量或收仓</strong>，不默认清货。季节性强的网鞋/拖凉鞋/棉鞋制定收仓计划。</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 8: 补货流程 -->
+<section class="content-section" id="restock">
+  <div class="section-title"><div class="num">8</div>补货流程</div>
+  <div class="section-desc">触发条件、标准流程、爆款预警机制（影刀机器人）。什么数据触发补货？补多少？怎么补？</div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon green">🔄</div><div><div class="card-title">补货决策流程</div><div class="card-subtitle">数据触发 → 决策 → 执行 → 跟进</div></div></div>
+    <div class="flow" style="margin: 24px 0; justify-content: center;">
+      <div class="flow-step blue">数据监控</div><span class="flow-arrow">→</span>
+      <div class="flow-step blue">触发判断</div><span class="flow-arrow">→</span>
+      <div class="flow-step green">计算补货量</div><span class="flow-arrow">→</span>
+      <div class="flow-step">货品会确认</div><span class="flow-arrow">→</span>
+      <div class="flow-step">下达订单</div><span class="flow-arrow">→</span>
+      <div class="flow-step">到货跟进</div><span class="flow-arrow">→</span>
+      <div class="flow-step green">入库验收</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header"><div class="card-icon red">🔥</div><div><div class="card-title">爆款补货（影刀预警）</div><div class="card-subtitle">最高优先级</div></div></div>
+      <div class="timeline">
+        <div class="timeline-item alert"><div class="timeline-time">触发条件</div><div class="timeline-title">影刀机器人：可用数 < 近七日销量</div><div class="timeline-desc">自动推送至"JSY-采购部（爆款预警）"群。红色警报，立即行动。</div></div>
+        <div class="timeline-item"><div class="timeline-time">Step 1</div><div class="timeline-title">测算明细</div><div class="timeline-desc">数据分析师（王文增）按补货基数×销售占比计算补货明细。同步至业务群确认。</div></div>
+        <div class="timeline-item"><div class="timeline-time">Step 2</div><div class="timeline-title">前端确认</div><div class="timeline-desc">运营/业务确认款式、数量、主推色、引流码。</div></div>
+        <div class="timeline-item"><div class="timeline-time">Step 3</div><div class="timeline-title">下单执行</div><div class="timeline-desc">优先1688平台下单。明确款式、数量、质量、交期。</div></div>
+        <div class="timeline-item"><div class="timeline-time">Step 4</div><div class="timeline-title">在途同步</div><div class="timeline-desc">更新采购在途数量，点击可查看订单详情（下单日期、采购数量）。</div></div>
+        <div class="timeline-item"><div class="timeline-time">Step 5</div><div class="timeline-title">到货跟进</div><div class="timeline-desc">每日跟进工厂进度。飞织7-10天、复杂10-15天。提前1-2天确认到货。</div></div>
+      </div>
+      <div class="formula-box" style="margin-top: 16px;">
+        <span class="highlight">爆款补货量</span> = (采购到货天数 + 15) × 日均销量 - 现有库存 - 采购在途
+        <span class="comment"># 目标库存天数：爆款15-20天</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-icon orange">📦</div><div><div class="card-title">常备/流转补货</div><div class="card-subtitle">标准流程</div></div></div>
+      <div class="timeline">
+        <div class="timeline-item warn"><div class="timeline-time">触发条件</div><div class="timeline-title">周转天数<目标天数 或 安全库存预警</div><div class="timeline-desc">每周货品会确认或按标准流程执行。</div></div>
+        <div class="timeline-item"><div class="timeline-time">Step 1</div><div class="timeline-title">筛选补货款</div><div class="timeline-desc">大货货盘筛选周转天数<10天且月销>100的款式。</div></div>
+        <div class="timeline-item"><div class="timeline-time">Step 2</div><div class="timeline-title">计算补货量</div><div class="timeline-desc">按标准补货公式计算。常备目标10-15天，流转目标5-10天。</div></div>
+        <div class="timeline-item"><div class="timeline-time">Step 3</div><div class="timeline-title">下单执行</div><div class="timeline-desc">标准采购流程。确认起订量、发货时效、物流方式。</div></div>
+        <div class="timeline-item"><div class="timeline-time">Step 4</div><div class="timeline-title">进度跟踪</div><div class="timeline-desc">采购不跟踪等于一场空。所有订单，盯死进度排产。</div></div>
+      </div>
+      <div class="alert alert-info" style="margin-top: 16px;">
+        <div class="alert-icon">📌</div>
+        <div><div class="alert-title">补货原则</div>
+        <div>B类（中间60%）：按标准安全库存备货，保持稳定。<br>C类（末尾20%）：只补缺号，宁缺毋滥。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 20px;">
+    <div class="card-header"><div class="card-icon red">🚫</div><div><div class="card-title">禁止补货清单</div><div class="card-subtitle">触碰以下任一条件，禁止补货</div></div></div>
+    <div class="grid-2">
+      <div class="alert alert-danger"><div class="alert-icon">❌</div><div><div class="alert-title">周转天数 > 30天</div><div>先清后补，库存消化后再考虑。</div></div></div>
+      <div class="alert alert-danger"><div class="alert-icon">❌</div><div><div class="alert-title">商品标签 = "五元清"</div><div>立即停止补货，全力清仓。</div></div></div>
+      <div class="alert alert-danger"><div class="alert-icon">❌</div><div><div class="alert-title">流转款已超期</div><div>启动降价促销，不补货。</div></div></div>
+      <div class="alert alert-danger"><div class="alert-icon">❌</div><div><div class="alert-title">帮子库存 > 现鞋 × 3</div><div>评估帮子利用率，考虑停做。</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 9: 清货流程 -->
+<section class="content-section" id="clearance">
+  <div class="section-title"><div class="num">9</div>清货流程</div>
+  <div class="section-desc">6步标准流程、清货决策树。滞销库存必须快速出清，资金占用越久，成本越高。</div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon red">🧹</div><div><div class="card-title">清货决策标准</div><div class="card-subtitle">什么情况下必须清货</div></div></div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>条件</th><th>触发动作</th><th>负责岗位</th></tr>
+        <tr><td>周转天数 > 60天</td><td>强制列入清货计划</td><td>采购主管（张伟晓）</td></tr>
+        <tr><td>商品标签 = "五元清"</td><td>立即停止补货，全力清仓</td><td>采购员</td></tr>
+        <tr><td>商品标签含"流转款"且已超期</td><td>启动降价促销</td><td>采购员+运营</td></tr>
+        <tr><td>月销量 < 10 且 库存 > 500</td><td>评估是否继续销售</td><td>采购主管（张伟晓）</td></tr>
+        <tr><td>当季SKU周转 > 90天</td><td>重大事故，立即启动</td><td>采购主管+总经办（郭晓杰）</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon orange">📋</div><div><div class="card-title">6步清货流程（月度循环）</div><div class="card-subtitle">T-30天 → T-10天 → T-5天</div></div></div>
+    <div class="step-process">
+      <div class="step-box active">
+        <div class="step-num">1</div>
+        <div class="step-title">新品到货计划</div>
+        <div class="step-desc">每月30号前开发部提交</div>
+      </div>
+      <div class="step-box active">
+        <div class="step-num">2</div>
+        <div class="step-title">清货款式清单</div>
+        <div class="step-desc">采购部10工作日内提供</div>
+      </div>
+      <div class="step-box active">
+        <div class="step-num">3</div>
+        <div class="step-title">清货计划</div>
+        <div class="step-desc">销售部5工作日内出具</div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">4</div>
+        <div class="step-title">审批确认</div>
+        <div class="step-desc">总经办（郭晓杰）审批</div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">5</div>
+        <div class="step-title">执行清仓</div>
+        <div class="step-desc">按节奏表推进</div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">6</div>
+        <div class="step-title">复盘备案</div>
+        <div class="step-desc">财务备案，不计亏损</div>
+      </div>
+    </div>
+    <div class="timeline" style="margin-top: 24px;">
+      <div class="timeline-item"><div class="timeline-time">每月30号前</div><div class="timeline-title">开发部提交新品到货计划</div><div class="timeline-desc">提交2个月后的上新计划。延期罚款100元/次。</div></div>
+      <div class="timeline-item"><div class="timeline-time">收到后10工作日</div><div class="timeline-title">采购部提供清货款式</div><div class="timeline-desc">结合库位、动销率，识别滞销品。延期罚款100元/次。</div></div>
+      <div class="timeline-item"><div class="timeline-time">收到后5工作日</div><div class="timeline-title">销售端出具清货计划</div><div class="timeline-desc">清货节奏表：款式、当前库存、每周动销、清货计划。延期罚款100元/次。</div></div>
+      <div class="timeline-item"><div class="timeline-time">每周货品会</div><div class="timeline-title">汇报清货进度</div><div class="timeline-desc">按计划完成月度目标的100%。可执行清货激励。</div></div>
+      <div class="timeline-item"><div class="timeline-time">特殊情况</div><div class="timeline-title">申诉机制</div><div class="timeline-desc">因市场波动、政策调整等客观原因未达成，提交证据至总经办审核，通过后可调整。</div></div>
+    </div>
+    <div class="alert alert-success" style="margin-top: 16px;">
+      <div class="alert-icon">✅</div>
+      <div><div class="alert-title">清货执行标准</div>
+      <div>拼多多协助清仓：亏损不计入拼多多团队核算。<br>破价销售：需向拼多多/孙武州团队提出协助请求。<br>财务备案：所有清货亏损不计入前端团队核算。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon purple">🌳</div><div><div class="card-title">清货决策树</div><div class="card-subtitle">一步步判断是否需要清货</div></div></div>
+    <div class="decision-tree">
+      <div class="decision-branch">
+        <div>Q1: 周转天数 > 60天？</div>
+      </div>
+      <div class="decision-branch decision-yes">
+        <div class="decision-arrow">↓ 是</div>
+        <div><strong>强制列入清货计划</strong></div>
+      </div>
+      <div class="decision-branch">
+        <div class="decision-arrow">↓ 否</div>
+        <div>Q2: 商品标签 = "五元清"？</div>
+      </div>
+      <div class="decision-branch decision-yes">
+        <div class="decision-arrow">↓ 是</div>
+        <div><strong>立即停止补货，全力清仓</strong></div>
+      </div>
+      <div class="decision-branch">
+        <div class="decision-arrow">↓ 否</div>
+        <div>Q3: 流转款已超期？</div>
+      </div>
+      <div class="decision-branch decision-yes">
+        <div class="decision-arrow">↓ 是</div>
+        <div><strong>启动降价促销</strong></div>
+      </div>
+      <div class="decision-branch decision-no">
+        <div class="decision-arrow">↓ 否</div>
+        <div><strong>继续监控，按正常策略执行</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 10: 新品流程 -->
+<section class="content-section" id="new-product">
+  <div class="section-title"><div class="num">10</div>新品流程</div>
+  <div class="section-desc">企划→企划会→打样→选品会→下单→跟单→到货质检。新品入库后的60天生命周期管理。</div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon blue">✨</div><div><div class="card-title">7步新品流程</div><div class="card-subtitle">从企划到入库质检</div></div></div>
+    <div class="step-process">
+      <div class="step-box active">
+        <div class="step-num">1</div>
+        <div class="step-title">企划</div>
+        <div class="step-desc">开发部提出新品企划</div>
+      </div>
+      <div class="step-box active">
+        <div class="step-num">2</div>
+        <div class="step-title">企划会</div>
+        <div class="step-desc">评审可行性</div>
+      </div>
+      <div class="step-box active">
+        <div class="step-num">3</div>
+        <div class="step-title">打样</div>
+        <div class="step-desc">工厂出样确认</div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">4</div>
+        <div class="step-title">选品会</div>
+        <div class="step-desc">确定款式下单</div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">5</div>
+        <div class="step-title">下单</div>
+        <div class="step-desc">确认数量交期</div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">6</div>
+        <div class="step-title">跟单</div>
+        <div class="step-desc">跟进生产进度</div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">7</div>
+        <div class="step-title">到货质检</div>
+        <div class="step-desc">入库验收</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon blue">📈</div><div><div class="card-title">新品生命周期管理</div><div class="card-subtitle">入库 → 监控 → 决策 → 定级</div></div></div>
+    <div class="flow" style="margin: 24px 0; justify-content: center;">
+      <div class="flow-step blue">新品入库</div><span class="flow-arrow">→</span>
+      <div class="flow-step">每日监控</div><span class="flow-arrow">→</span>
+      <div class="flow-step">入库15天</div><span class="flow-arrow">→</span>
+      <div class="flow-step">入库30天</div><span class="flow-arrow">→</span>
+      <div class="flow-step orange">入库60天</div><span class="flow-arrow">→</span>
+      <div class="flow-step green">策略定级</div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>时间节点</th><th>动作</th><th>标准</th></tr>
+        <tr><td>入库当日</td><td>数据分析师录入系统，开始监控</td><td>确保款式编码、供应商、成本价准确</td></tr>
+        <tr><td>入库后每日</td><td>监控销售数据、退货率、动销</td><td>退货率>50%当天分析反馈开发端</td></tr>
+        <tr><td>入库15天</td><td>首次评估</td><td>日均销量、转化率、收藏加购</td></tr>
+        <tr><td>入库30天</td><td>中期评估</td><td>月销趋势、是否达预期</td></tr>
+        <tr><td><span class="tag tag-red">入库60天</span></td><td><strong>必须变更策略</strong></td><td>爆款/常备/流转/清货（四选一）</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header"><div class="card-icon green">📈</div><div><div class="card-title">白牌新品</div><div class="card-subtitle">60天必须决策</div></div></div>
+      <p>入库后数据分析师<strong>每日监控</strong>。</p>
+      <p>退货率>50%需<strong>当天分析原因</strong>并反馈开发端。</p>
+      <p>退货率>70%重点跟踪，<strong>无改善直接淘汰</strong>。</p>
+      <p>入库满60天<strong>必须变更策略</strong>：爆款/常备/流转/清货。</p>
+      <p>新品补货需与<strong>前端确认真实需求</strong>。</p>
+      <p>MOQ款必须由<strong>前端确认库存责任</strong>。</p>
+      <div class="alert alert-info" style="margin-top: 12px;"><div class="alert-icon">💡</div><div>未达标前端提报需有数据依据、推广计划、需求数量、重点SKU、责任归属，并经货品会确认。</div></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-icon purple">📈</div><div><div class="card-title">双星新品</div><div class="card-subtitle">有订单后才能生产</div></div></div>
+      <p>有订单后才可在<strong>双星系统申请</strong>辅料/织唛/LOGO。</p>
+      <p>青岛总部审核、制作、快递到位后才可生产双星帮面。</p>
+      <p>首单（无返单，60天）→ 新品（有返单且<2000，60天）。</p>
+      <p>60天后评估升级为平销/常备或降级。</p>
+      <div class="alert alert-warning" style="margin-top: 12px;"><div class="alert-icon">⚠️</div><div>双星生产周期长于白牌，需预留更长时间窗口。</div></div>
+    </div>
+  </div>
+
+  <div class="alert alert-danger" style="margin-top: 20px;">
+    <div class="alert-icon">🚨</div>
+    <div><div class="alert-title">新品红线</div>
+    <div>入库60天未变更策略 → 采购部责任<br>新品退货率>70%未处理 → 品控+开发部责任<br>MOQ款未确认库存责任 → 前端+采购共同责任</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 11: 爆款管控 -->
+<section class="content-section" id="hot-sku">
+  <div class="section-title"><div class="num">11</div>爆款管控</div>
+  <div class="section-desc">15天管控机制、预警逻辑、响应流程。爆款是生命线，必须确保库存充足。</div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon red">🔥</div><div><div class="card-title">爆款管控全流程</div><div class="card-subtitle">从提报到绩效闭环</div></div></div>
+    <div class="flow" style="margin: 24px 0; justify-content: center;">
+      <div class="flow-step">爆款提报</div><span class="flow-arrow">→</span>
+      <div class="flow-step blue">货品会确认</div><span class="flow-arrow">→</span>
+      <div class="flow-step blue">标签维护</div><span class="flow-arrow">→</span>
+      <div class="flow-step green">明细测算</div><span class="flow-arrow">→</span>
+      <div class="flow-step">在途同步</div><span class="flow-arrow">→</span>
+      <div class="flow-step">到货跟进</div><span class="flow-arrow">→</span>
+      <div class="flow-step">缺货监控</div><span class="flow-arrow">→</span>
+      <div class="flow-step">绩效核算</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header"><div class="card-icon blue">📋</div><div><div class="card-title">爆款提报</div><div class="card-subtitle">前端发起，货品会确认</div></div></div>
+      <p><strong>提报方：</strong>前端运营及业务</p>
+      <p><strong>提报内容：</strong></p>
+      <ul style="margin-left: 20px; margin-bottom: 12px;">
+        <li>款式编码</li>
+        <li>安全库存基数</li>
+        <li>工厂备帮数量</li>
+        <li>引流码主推色</li>
+      </ul>
+      <p><strong>筛选标准：</strong>结合历史销售数据、淡旺季预测、市场需求，筛选20-30个重点款式。</p>
+      <div class="alert alert-info"><div class="alert-icon">💡</div><div>爆款标签可按月度动态调整，由运营及业务提出变更明细，经货品会确认后更新。</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-icon green">📊</div><div><div class="card-title">爆款明细测算</div><div class="card-subtitle">数据分析师（王文增）负责</div></div></div>
+      <p><strong>测算时间：</strong>货品会后1个工作日内</p>
+      <p><strong>测算内容：</strong></p>
+      <ul style="margin-left: 20px; margin-bottom: 12px;">
+        <li>历史销售数据回顾</li>
+        <li>日均销量计算</li>
+        <li>销售渠道占比分析</li>
+        <li>补备货基数 × 销售占比 = 补备货明细</li>
+      </ul>
+      <p><strong>输出：</strong>补备货明细表，同步至业务沟通群，运营/业务确认无误后执行。</p>
+      <div class="formula-box" style="margin-top: 12px;">
+        <span class="highlight">补备货量</span> = 补备货基数 × 销售渠道占比
+        <span class="comment"># 确保爆款各渠道库存充足</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 20px;">
+    <div class="card-header"><div class="card-icon red">🚨</div><div><div class="card-title">15天爆款管控机制</div><div class="card-subtitle">影刀机器人 + 人工响应</div></div></div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>天数</th><th>动作</th><th>负责</th><th>输出</th></tr>
+        <tr><td><span class="tag tag-red">D1</span></td><td>影刀机器人预警：可用数 < 近七日销量</td><td>系统自动</td><td>推送至"JSY-采购部（爆款预警）"群</td></tr>
+        <tr><td><span class="tag tag-red">D1</span></td><td>采购文员导出爆款缺货统计表</td><td>采购文员</td><td>爆款缺货统计表</td></tr>
+        <tr><td><span class="tag tag-orange">D1-D2</span></td><td>采购员核查原因并推进解决</td><td>采购员</td><td>异常处理记录</td></tr>
+        <tr><td><span class="tag tag-orange">D3-D5</span></td><td>下单执行、协调供应商</td><td>采购跟单员</td><td>采购订单</td></tr>
+        <tr><td><span class="tag tag-blue">D5-D10</span></td><td>每日跟进工厂进度</td><td>采购跟单员</td><td>进度更新</td></tr>
+        <tr><td><span class="tag tag-green">D10-D15</span></td><td>到货入库、库存恢复</td><td>仓储+品控</td><td>入库验收</td></tr>
+      </table>
+    </div>
+    <div class="alert alert-danger" style="margin-top: 16px;">
+      <div class="alert-icon">⏰</div>
+      <div><div class="alert-title">生产周期参考</div>
+      <div>飞织款式：7-10天 | 复杂款式：10-15天 | 外地供应链：视实际情况额外预留</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon purple">📈</div><div><div class="card-title">爆款绩效</div><div class="card-subtitle">与采购负责人绩效直接挂钩</div></div></div>
+    <p><strong>核算周期：</strong>每月月初</p>
+    <p><strong>核算部门：</strong>财务部（贺帅艳）</p>
+    <p><strong>考核指标：</strong>爆款缺货率、缺货频次</p>
+    <p><strong>挂钩方式：</strong>缺货率与采购负责人绩效直接挂钩，留存备案，作为薪酬调整依据。</p>
+    <div class="alert alert-warning"><div class="alert-icon">⚠️</div><div>若因供应链异常（如环保管控等不可抗因素）导致爆款缺货，采购部需在24小时内同步至业务部门，协调解决。</div></div>
+  </div>
+</section>
+
+<!-- SECTION 12: 跨部门协作 -->
+<section class="content-section" id="cross-dept">
+  <div class="section-title"><div class="num">12</div>跨部门协作</div>
+  <div class="section-desc">对接人、沟通机制、协作规范、审批流程。90%的执行问题出在跨部门沟通上。</div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon blue">🤝</div><div><div class="card-title">跨部门对接关系</div><div class="card-subtitle">"出了问题找谁"速查表</div></div></div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>问题类型</th><th>对接部门</th><th>对接岗位</th><th>紧急程度</th></tr>
+        <tr><td>爆款缺货 / 补货需求</td><td>运营部</td><td>运营专员/组长</td><td><span class="tag tag-red">紧急</span></td></tr>
+        <tr><td>新品开发计划</td><td>开发部</td><td>开发专员</td><td><span class="tag tag-orange">重要</span></td></tr>
+        <tr><td>入库质检异常</td><td>仓储部</td><td>仓库负责人</td><td><span class="tag tag-red">紧急</span></td></tr>
+        <tr><td>供应商付款/对账</td><td>财务部</td><td>贺帅艳</td><td><span class="tag tag-blue">常规</span></td></tr>
+        <tr><td>清货计划审批</td><td>总经办</td><td>郭晓杰</td><td><span class="tag tag-orange">重要</span></td></tr>
+        <tr><td>制度/奖惩申诉</td><td>总经办</td><td>总经办</td><td><span class="tag tag-blue">常规</span></td></tr>
+        <tr><td>质量事故/重大异常</td><td>品控组</td><td>杨俊娜</td><td><span class="tag tag-red">紧急</span></td></tr>
+        <tr><td>双星辅料/织唛</td><td>双星青岛总部</td><td>双星系统</td><td><span class="tag tag-orange">重要</span></td></tr>
+      </table>
+    </div>
+    <div class="alert alert-warning">
+      <div class="alert-icon">⚠️</div>
+      <div>
+        <div class="alert-title">沟通铁律</div>
+        <div>所有跨部门沟通必须留痕（钉钉群/微信），口头说了不算，写下来才算。涉及设计/采购/仓库等跨部门需求统一经运营组长对接，避免多头沟通造成信息混乱。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header"><div class="card-icon blue">🎨</div><div><div class="card-title">跟运营/业务沟通</div><div class="card-subtitle">爆款需求与清货协同</div></div></div>
+      <p><strong>备货提醒：</strong>推爆前提前7天沟通采购备货。</p>
+      <p><strong>爆款提报：</strong>运营提供款式编码、安全库存基数、备帮数量、主推色。</p>
+      <p><strong>清货协同：</strong>销售端5工作日内出具清货计划，亏损不计入团队核算。</p>
+      <p><strong>活动确认：</strong>百亿补贴/秒杀报名前确认库存充足，避免超卖。</p>
+      <div class="alert alert-info"><div class="alert-icon">💡</div><div>所有沟通统一经运营组长对接，避免多头沟通造成信息混乱。</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-icon green">🔧</div><div><div class="card-title">跟开发部沟通</div><div class="card-subtitle">新品计划与质量反馈</div></div></div>
+      <p><strong>新品计划：</strong>每月30号前提交2个月后的到货计划。</p>
+      <p><strong>退货反馈：</strong>退货率>50%当天分析原因反馈开发端。</p>
+      <p><strong>环保料切换：</strong>仓库统一严格先进先出，旧货先发、新货后发、严禁跳货。</p>
+      <p><strong>白牌仓与双星仓同步宣导。</strong></p>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-icon orange">📦</div><div><div class="card-title">跟仓储部沟通</div><div class="card-subtitle">入库与库存管理</div></div></div>
+      <p><strong>入库质检：</strong>入仓质检异常立即通知品控组（杨俊娜）。</p>
+      <p><strong>库存预警：</strong>主推款库存低于7天销量立即预警。</p>
+      <p><strong>先进先出：</strong>环保料切换时严格先进先出，旧货先发、新货后发。</p>
+      <p><strong>每周同步：</strong>缺货时间、到货时间、错发款式。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-icon purple">💰</div><div><div class="card-title">跟财务部沟通</div><div class="card-subtitle">对账与绩效</div></div></div>
+      <p><strong>爆款绩效：</strong>每月月初财务部（贺帅艳）核算爆款缺货管控绩效。</p>
+      <p><strong>清货备案：</strong>清货亏损财务备案，不计入前端团队核算。</p>
+      <p><strong>供应商付款：</strong>按合同条款执行，货到付款优先。</p>
+      <p><strong>报销：</strong>购物样品/打车/付费工具走报销流程。</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 20px;">
+    <div class="card-header"><div class="card-icon cyan">📋</div><div><div class="card-title">审批流程</div><div class="card-subtitle">高频审批类型与路径</div></div></div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>审批类型</th><th>占比</th><th>平均金额</th><th>审批路径</th></tr>
+        <tr><td><span class="tag tag-blue">供应商付款</span></td><td>~60%</td><td>几千~50万</td><td>采购员 → 采购主管 → 财务（贺帅艳） → 老板（郭晓杰）</td></tr>
+        <tr><td><span class="tag tag-blue">采购辅料</span></td><td>~15%</td><td>几十~2.5万</td><td>采购员 → 采购主管 → 财务</td></tr>
+        <tr><td><span class="tag tag-green">新品价格确认</span></td><td>~12%</td><td>23~52元/双</td><td>开发 → 采购主管 → 财务</td></tr>
+        <tr><td><span class="tag tag-green">产品改价</span></td><td>~8%</td><td>0.5~2元/双</td><td>采购员 → 采购主管</td></tr>
+        <tr><td><span class="tag tag-gray">个人事务</span></td><td>~5%</td><td>—</td><td>员工 → 部门负责人 → 人事</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 13: 数据看板 -->
+<section class="content-section" id="dashboard">
+  <div class="section-title"><div class="num">13</div>数据看板</div>
+  <div class="section-desc">聚水潭实时数据、多维表看板、增长率分析。每日必看的数据看板。</div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header"><div class="card-icon blue">📊</div><div><div class="card-title">货盘看板</div><div class="card-subtitle">看大盘：品牌/品类维度</div></div></div>
+      <p><strong>看板内容：</strong>按品牌+产品分类维度汇总</p>
+      <p><strong>关键指标：</strong>款数、库存、3日销、7日销、15日销、月销</p>
+      <p><strong>看什么：</strong>整体库存健康度、各品类销售趋势</p>
+      <p><strong>怎么用：</strong>第一步"看大盘"，快速掌握整体情况。</p>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-icon green">📈</div><div><div class="card-title">大货货盘</div><div class="card-subtitle">找问题：款式级分析</div></div></div>
+      <p><strong>看板内容：</strong>所有在售款式的核心信息汇总</p>
+      <p><strong>关键指标：</strong>周转天数、可用数、库+途周转、采购价、品牌</p>
+      <p><strong>看什么：</strong>筛选周转天数>30天的款 → 定位滞销款</p>
+      <p><strong>怎么用：</strong>第二步"找问题"，定位具体款式风险。</p>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-icon red">🧹</div><div><div class="card-title">清货看板</div><div class="card-subtitle">监控超期库存</div></div></div>
+      <p><strong>看板内容：</strong>按商品标签（流转月份）分组</p>
+      <p><strong>关键指标：</strong>款式数量、库存、7日销量</p>
+      <p><strong>看什么：</strong>流转款是否超期、清货进度</p>
+      <p><strong>怎么用：</strong>第三步"定策略"，制定促销/降价方案。</p>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-icon orange">🌐</div><div><div class="card-title">网鞋看板</div><div class="card-subtitle">网鞋品类专项</div></div></div>
+      <p><strong>看板内容：</strong>网鞋男鞋/网鞋女鞋等分类统计</p>
+      <p><strong>关键指标：</strong>款式数量、库存</p>
+      <p><strong>看什么：</strong>网鞋品类库存结构</p>
+      <p><strong>怎么用：</strong>专项品类管理，季节性强的网鞋制定收仓计划。</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 20px;">
+    <div class="card-header"><div class="card-icon cyan">📋</div><div><div class="card-title">聚水潭实时数据</div><div class="card-subtitle">系统标签维护与数据同步</div></div></div>
+    <p><strong>聚水潭ERP</strong>是公司核心系统，采购部负责系统标签维护。</p>
+    <p><strong>实时更新：</strong>库存数据、订单数据、销售数据实时同步。</p>
+    <p><strong>标签维护：</strong>爆款/常备/流转/清货/新品等策略标签在聚水潭中维护。</p>
+    <p><strong>数据准确性：</strong>聚水潭数据是货盘数据的唯一事实来源，确保准确。</p>
+  </div>
+
+  <div class="card" style="margin-top: 20px;">
+    <div class="card-header"><div class="card-icon purple">📋</div><div><div class="card-title">增长率分析</div><div class="card-subtitle">《增长率分析表》共享群</div></div></div>
+    <p><strong>群名：</strong>《增长率分析表》共享群</p>
+    <p><strong>功能：</strong>销售数据分析共享，增长趋势监控</p>
+    <p><strong>使用：</strong>管理层+数据分析师定期分析各品类增长率</p>
+    <p><strong>决策：</strong>基于增长率调整采购策略和库存结构</p>
+  </div>
+
+  <div class="card" style="margin-top: 20px;">
+    <div class="card-header"><div class="card-icon cyan">📋</div><div><div class="card-title">每日数据检查清单</div><div class="card-subtitle">每天8:30-9:30必做</div></div></div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>检查项</th><th>看什么</th><th>异常处理</th></tr>
+        <tr><td>数据源-库存动销</td><td>数据是否已更新</td><td>未更新联系ERP管理员</td></tr>
+        <tr><td>大货货盘</td><td>周转天数>30天的款</td><td>标记关注，列入清货排查</td></tr>
+        <tr><td>爆款缺货统计</td><td>缺货数量、缺货率</td><td>立即核查原因并推进</td></tr>
+        <tr><td>新品数据</td><td>退货率、动销</td><td>退货率>50%当天反馈开发</td></tr>
+        <tr><td>在途库存</td><td>采购订单进度</td><td>延迟风险及时同步</td></tr>
+        <tr><td>清货看板</td><td>超期流转款</td><td>启动降价促销</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 14: 制度文件 -->
+<section class="content-section" id="rules">
+  <div class="section-title"><div class="num">14</div>制度文件</div>
+  <div class="section-desc">考勤、工牌、报销、新人培训、品控驻厂制度。制度是底线，奖惩是手段。</div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header"><div class="card-icon blue">⏰</div><div><div class="card-title">考勤制度</div><div class="card-subtitle">工作时间与请假规范</div></div></div>
+      <p><strong>工作时间：</strong>上午 8:30-12:00，下午 13:30-18:00</p>
+      <p><strong>旺季：</strong>冬季加班</p>
+      <p><strong>淡季：</strong>单休</p>
+      <p><strong>请假：</strong>钉钉发起事假申请 → 部门老大审核 → 超3天以上人事及老板审核</p>
+      <p><strong>补卡：</strong>每月4次漏打卡机会，超出20元/次</p>
+      <p><strong>迟到：</strong>第1次扣5元，第2次扣10元，第3次扣20元，第4次扣40元...累加</p>
+      <p><strong>旷工：</strong>按日薪扣除，部门负责人连带</p>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-icon orange">🎫</div><div><div class="card-title">工牌管理制度</div><div class="card-subtitle">佩戴与保管规范</div></div></div>
+      <p><strong>佩戴要求：</strong>进出办公室及仓库必须佩戴工牌。</p>
+      <p><strong>遗失/损坏：</strong>及时到行政部办理挂失补办。</p>
+      <p><strong>处罚：</strong></p>
+      <ul>
+        <li>未佩戴工牌：5元/次</li>
+        <li>故意损坏/涂改：10元 + 限期补办</li>
+        <li>遗失未上报：50元</li>
+        <li>转借他人：双方各50元</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-top: 20px;">
+    <div class="card">
+      <div class="card-header"><div class="card-icon green">💰</div><div><div class="card-title">财务报销</div><div class="card-subtitle">差旅费与费用报销</div></div></div>
+      <p><strong>报销范围：</strong>购物样品、打车、付费工具、差旅费。</p>
+      <p><strong>流程：</strong>取得合法票据 → 填写报销单 → 附上票据及付款截图 → 提交审批。</p>
+      <p><strong>出差学习：</strong>报销前需提交《外出学习报告》。</p>
+      <p><strong>支付方式：</strong>微信/支付宝/银行收款账号。</p>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-icon purple">📚</div><div><div class="card-title">新人培训</div><div class="card-subtitle">试用期与转正</div></div></div>
+      <p><strong>试用期：</strong>一般前三个月为试用期。</p>
+      <p><strong>培训内容：</strong>公司制度培训、岗位技能培训、通用能力培训。</p>
+      <p><strong>转正：</strong>试用期满，发起转正流程，填写《转正审批表》。</p>
+      <p><strong>提前转正：</strong>表现突出，经考核可缩短试用期。</p>
+      <p><strong>生效时间：</strong>当月15日前发起，当月16日生效；15日后发起，次月1日生效。</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 20px;">
+    <div class="card-header"><div class="card-icon red">⚖️</div><div><div class="card-title">清货制度奖惩</div><div class="card-subtitle">2025年4月4日实施</div></div></div>
+    <p><strong>适用范围：</strong>开发部、采购部、前端销售（阿里业务主导）</p>
+    <p><strong>关联部门：</strong>仓储部、采购部、开发部提供数据支撑</p>
+    <h4>责任分工</h4>
+    <ul style="margin-left: 20px; margin-bottom: 12px;">
+      <li>开发部：每月30号前提交2个月后新品到货计划</li>
+      <li>采购部：收到计划后10工作日提供清货款式</li>
+      <li>销售部：收到清货清单后5工作日出具清货计划</li>
+    </ul>
+    <h4>处罚标准</h4>
+    <div class="alert alert-danger"><div class="alert-icon">💰</div><div>延期或未提交：<strong>罚款100元/次</strong></div></div>
+    <h4>申诉机制</h4>
+    <p>目标因市场波动、政策调整等客观原因未达成，需提交证据至总经办审核，通过后可调整考核结果。</p>
+  </div>
+
+  <div class="card" style="margin-top: 20px;">
+    <div class="card-header"><div class="card-icon purple">🔍</div><div><div class="card-title">品控驻厂制度</div><div class="card-subtitle">品质管控前置</div></div></div>
+    <p><strong>品控固定驻核心工厂：</strong>对重点供应商实施驻厂质检。</p>
+    <p><strong>驻厂职责：</strong></p>
+    <ul>
+      <li>生产过程中的质量巡检</li>
+      <li>原材料入库检验</li>
+      <li>成品出厂前的抽检</li>
+      <li>不合格品及时标记隔离</li>
+    </ul>
+    <p><strong>入仓质检：</strong>所有到货必须经过品控组（杨俊娜）入仓质检。</p>
+    <p><strong>质检报告：</strong>每日出具质检日报，不合格品处理记录归档。</p>
+  </div>
+</section>
+
+<!-- SECTION 15: 问题处理 -->
+<section class="content-section" id="troubleshoot">
+  <div class="section-title"><div class="num">15</div>问题处理</div>
+  <div class="section-desc">紧急缺货、来货异常、次品处理、升级路径。遇到问题了怎么办？找谁？按什么流程？</div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon red">🆘</div><div><div class="card-title">常见问题速查</div><div class="card-subtitle">按问题类型分类</div></div></div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>问题类型</th><th>症状</th><th>立即动作</th><th>找谁</th></tr>
+        <tr><td><span class="tag tag-red">爆款缺货</span></td><td>库存低于7天销量</td><td>立即核查原因，推进补货</td><td>运营专员 → 采购员</td></tr>
+        <tr><td><span class="tag tag-red">到货延迟</span></td><td>工厂未按交期交付</td><td>24小时内同步业务群，制定应对方案</td><td>采购员 → 运营组长</td></tr>
+        <tr><td><span class="tag tag-orange">质检异常</span></td><td>入仓发现不合格品</td><td>通知品控组，暂停该批次入库</td><td>杨俊娜 → 张伟晓</td></tr>
+        <tr><td><span class="tag tag-orange">退货率高</span></td><td>新品退货率>50%</td><td>当天分析原因反馈开发端</td><td>王文增 → 开发部</td></tr>
+        <tr><td><span class="tag tag-blue">数据异常</span></td><td>公式返回#N/A或负数</td><td>检查数据源唯一性、匹配关系</td><td>王文增</td></tr>
+        <tr><td><span class="tag tag-blue">供应商对账</span></td><td>付款/金额争议</td><td>核对订单、入库单、合同条款</td><td>贺帅艳</td></tr>
+        <tr><td><span class="tag tag-gray">制度申诉</span></td><td>对奖惩有异议</td><td>提交证据至总经办审核</td><td>郭晓杰</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header"><div class="card-icon blue">🔥</div><div><div class="card-title">爆款缺货应急</div><div class="card-subtitle">最高优先级响应</div></div></div>
+      <div class="timeline">
+        <div class="timeline-item alert"><div class="timeline-time">T+0</div><div class="timeline-title">发现缺货</div><div class="timeline-desc">影刀机器人预警或文员导出缺货统计，采购员立即核查。</div></div>
+        <div class="timeline-item"><div class="timeline-time">T+0</div><div class="timeline-title">原因定位</div><div class="timeline-desc">库存不足？在途延迟？需求突增？</div></div>
+        <div class="timeline-item"><div class="timeline-time">T+0</div><div class="timeline-title">即时响应</div><div class="timeline-desc">紧急下单/调拨/协调其他供应商。</div></div>
+        <div class="timeline-item"><div class="timeline-time">T+0</div><div class="timeline-title">同步业务群</div><div class="timeline-desc">告知运营预计补货时间，调整前端策略。</div></div>
+        <div class="timeline-item"><div class="timeline-time">T+1</div><div class="timeline-title">跟进到货</div><div class="timeline-desc">每日跟进工厂进度，确保按时到仓。</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-icon red">📦</div><div><div class="card-title">到货延迟应急</div><div class="card-subtitle">供应链风险管控</div></div></div>
+      <div class="timeline">
+        <div class="timeline-item warn"><div class="timeline-time">提前1-2天</div><div class="timeline-title">预警发现</div><div class="timeline-desc">每日跟进时确认工厂可能延迟。</div></div>
+        <div class="timeline-item"><div class="timeline-time">T+0</div><div class="timeline-title">同步业务群</div><div class="timeline-desc">告知延迟风险，预计新交期。</div></div>
+        <div class="timeline-item"><div class="timeline-time">T+0</div><div class="timeline-title">制定方案</div><div class="timeline-desc">调拨其他款/临时供应商/调整前端推广。</div></div>
+        <div class="timeline-item"><div class="timeline-time">T+0</div><div class="timeline-title">升级处理</div><div class="timeline-desc">若影响爆款，升级至采购主管（张伟晓）。</div></div>
+        <div class="timeline-item"><div class="timeline-time">持续</div><div class="timeline-title">每日跟进</div><div class="timeline-desc">直到问题解决，库存恢复正常。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-top: 20px;">
+    <div class="card">
+      <div class="card-header"><div class="card-icon orange">🔍</div><div><div class="card-title">来货异常处理</div><div class="card-subtitle">质检不合格</div></div></div>
+      <p><strong>发现异常：</strong>入仓质检发现不合格品。</p>
+      <p><strong>立即动作：</strong>通知品控组（杨俊娜），暂停该批次入库。</p>
+      <p><strong>原因分析：</strong>供应商生产问题？物流损坏？标签错误？</p>
+      <p><strong>处理方案：</strong></p>
+      <ul>
+        <li>轻微问题：返工处理后重新入库</li>
+        <li>严重问题：整批退货，供应商承担损失</li>
+        <li>重复问题：供应商评分降级，减少订单</li>
+      </ul>
+      <p><strong>归档：</strong>质检异常记录归档，纳入供应商评估。</p>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-icon purple">📈</div><div><div class="card-title">升级路径</div><div class="card-subtitle">问题升级规则</div></div></div>
+      <p><strong>一级（采购员）：</strong>日常补货、常规到货跟进、一般质检问题。</p>
+      <p><strong>二级（采购主管-张伟晓）：</strong>爆款缺货、重大延迟、跨部门协调、清货审批。</p>
+      <p><strong>三级（总经办-郭晓杰）：</strong>重大质量事故、供应商终止合作、制度申诉、大额付款审批。</p>
+      <p><strong>紧急通道：</strong>涉及重大经济损失或客户投诉，可直接升级至老板。</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 16: 新人指南 -->
+<section class="content-section" id="newcomer">
+  <div class="section-title"><div class="num">16</div>新人指南</div>
+  <div class="section-desc">入职路径、第一周安排、学习资源、检查清单。入职第一周按看板逐项完成，每完成一项打勾。</div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon green">🌱</div><div><div class="card-title">入职第一周任务看板</div><div class="card-subtitle">7天内完成</div></div></div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-time">Day 1</div><div class="timeline-title">通读本行动指南</div><div class="timeline-desc">了解部门定位、组织架构、数据逻辑、流程框架。</div></div>
+      <div class="timeline-item"><div class="timeline-time">Day 2</div><div class="timeline-title">熟悉货盘表格</div><div class="timeline-desc">打开货盘看板，理解每个字段含义。练习筛选、排序、VLOOKUP。</div></div>
+      <div class="timeline-item"><div class="timeline-time">Day 3</div><div class="timeline-title">加入工作群</div><div class="timeline-desc">加入采购部群、业务沟通群、运营对接群、爆款预警群。</div></div>
+      <div class="timeline-item"><div class="timeline-time">Day 4</div><div class="timeline-title">学习补货流程</div><div class="timeline-desc">跟带教人学习一次完整补货流程：从数据监控到下单到跟进。</div></div>
+      <div class="timeline-item"><div class="timeline-time">Day 5</div><div class="timeline-title">独立巡看板</div><div class="timeline-desc">独立完成一次日常巡看板，记录发现的问题。</div></div>
+      <div class="timeline-item"><div class="timeline-time">Day 6</div><div class="timeline-title">学习清货流程</div><div class="timeline-desc">了解清货决策标准、月度循环、奖惩机制。</div></div>
+      <div class="timeline-item"><div class="timeline-time">Day 7</div><div class="timeline-title">1v1复盘</div><div class="timeline-desc">跟组长做1v1复盘，回顾本周学习，提出疑问，确认下周计划。</div></div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header"><div class="card-icon blue">📚</div><div><div class="card-title">必学文件清单</div><div class="card-subtitle">存放在E:/部门资料</div></div></div>
+      <ul class="checklist">
+        <li>《清货制度》</li>
+        <li>《货品会策略跟踪奖惩制度》</li>
+        <li>《爆款缺货管控流程》</li>
+        <li>《采购专员师徒带教流程》</li>
+        <li>《岗位说明书》</li>
+        <li>《双星策略定义》</li>
+        <li>《外购鞋采购流程》</li>
+        <li>《新员工入职指引》</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-icon orange">🎯</div><div><div class="card-title">四阶段成长路径</div><div class="card-subtitle">通关式成长</div></div></div>
+      <div class="timeline">
+        <div class="timeline-item"><div class="timeline-time">第1-2周</div><div class="timeline-title">入门期</div><div class="timeline-desc">熟悉环境、工具、流程。</div></div>
+        <div class="timeline-item"><div class="timeline-time">第1-2月</div><div class="timeline-title">上手期</div><div class="timeline-desc">能独立执行日常动作：巡看板、补货、跟进。</div></div>
+        <div class="timeline-item"><div class="timeline-time">第3-6月</div><div class="timeline-title">成长期</div><div class="timeline-desc">能独立负责单品运营，完整单品闭环。</div></div>
+        <div class="timeline-item"><div class="timeline-time">6月+</div><div class="timeline-title">成熟期</div><div class="timeline-desc">能带品类/带团队，策略制定。</div></div>
+      </div>
+      <div class="alert alert-info"><div class="alert-icon">💡</div><div>成长的关键不是学了什么，而是<strong>做了什么 + 复盘了什么</strong>。每个阶段结束跟组长做一次1v1复盘。</div></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 20px;">
+    <div class="card-header"><div class="card-icon cyan">📋</div><div><div class="card-title">新人检查清单</div><div class="card-subtitle">入职必备事项</div></div></div>
+    <div class="grid-2">
+      <div>
+        <h4>入职手续</h4>
+        <ul class="checklist">
+          <li>提交身份证明、离职证明、学历证明、体检报告</li>
+          <li>填写《员工入职登记表》、签订《入职承诺书》</li>
+          <li>到前台领取记事本、笔、工牌</li>
+          <li>加入钉钉考勤组</li>
+          <li>加入公司钉钉工作大群</li>
+          <li>加入部门群</li>
+        </ul>
+      </div>
+      <div>
+        <h4>工作准备</h4>
+        <ul class="checklist">
+          <li>开启工作账号（聚水潭ERP）</li>
+          <li>在"制度发布处"获取《新员工学习手册》</li>
+          <li>学习企业文化、组织架构、规章制度</li>
+          <li>熟悉产品知识</li>
+          <li>钉钉日志每天18:00前提交</li>
+          <li>熟悉办公用品领用流程（联系曲雅倩）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 20px;">
+    <div class="card-header"><div class="card-icon purple">📞</div><div><div class="card-title">紧急联系与支持</div><div class="card-subtitle">新人遇到问题找谁</div></div></div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>场景</th><th>对接人</th><th>联系方式</th></tr>
+        <tr><td>薪资与合同</td><td>人事行政部-侯静怡</td><td>19937975279</td></tr>
+        <tr><td>考勤、钉钉</td><td>人事行政部-张海丽</td><td>13526930856</td></tr>
+        <tr><td>聚水潭ERP系统</td><td>洛阳事业部-王丹丹</td><td>15896591674</td></tr>
+        <tr><td>电脑与网络</td><td>人事行政部-曲雅倩</td><td>13598471724</td></tr>
+        <tr><td>采购部业务问题</td><td>采购主管-张伟晓</td><td>钉钉联系</td></tr>
+        <tr><td>数据分析问题</td><td>数据支持-王文增</td><td>钉钉联系</td></tr>
+        <tr><td>品控问题</td><td>品控负责人-杨俊娜</td><td>钉钉联系</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 20px;">
+    <div class="card-header"><div class="card-icon green">🧮</div><div><div class="card-title">关键数字速查</div><div class="card-subtitle">刻在脑子里</div></div></div>
+    <div class="grid-4">
+      <div class="stat-card">
+        <div class="stat-value">7</div>
+        <div class="stat-label">爆款库存预警天数</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">15</div>
+        <div class="stat-label">爆款目标库存天数</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">30</div>
+        <div class="stat-label">补货红线（周转天数）</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">60</div>
+        <div class="stat-label">新品决策截止天数</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">90</div>
+        <div class="stat-label">当季SKU滞销红线</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">1.5</div>
+        <div class="stat-label">安全库存倍数</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">20-30</div>
+        <div class="stat-label">爆款管控款数</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">18:00</div>
+        <div class="stat-label">钉钉日志截止</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+function toggleNav() {
+  document.getElementById('navBar').classList.toggle('open');
+}
+function toggleAccordion(header) {
+  const body = header.nextElementSibling;
+  header.classList.toggle('active');
+  body.classList.toggle('show');
+}
+function searchNav() {
+  const query = document.getElementById('navSearch').value.toLowerCase();
+  const links = document.querySelectorAll('.nav-link');
+  links.forEach(link => {
+    const text = link.textContent.toLowerCase();
+    link.style.display = text.includes(query) ? 'block' : 'none';
+  });
+}
+const sections = document.querySelectorAll('.content-section');
+const navLinks = document.querySelectorAll('.nav-link');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    if (scrollY >= sectionTop - 100) {
+      current = section.getAttribute('id');
+    }
+  });
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) {
+      link.classList.add('active');
+    }
+  });
+});
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('navBar').classList.remove('open');
+  });
+});
+</script>
+
+</body>
+</html>
